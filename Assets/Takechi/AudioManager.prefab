@@ -48,8 +48,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _se: {fileID: 5483715532172710456}
   _bgm: {fileID: 5386084110971761300}
-  _seClip: []
-  _bgmClip: []
+  _seClip:
+  - {fileID: 0}
+  _bgmClip:
+  - {fileID: 0}
 --- !u!82 &5483715532172710456
 AudioSource:
   m_ObjectHideFlags: 0
