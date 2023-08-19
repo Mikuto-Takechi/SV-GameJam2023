@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.UI.Image;
 
 public class Enemy : MonoBehaviour
 {
     [SerializeField] float _moveSpeed = 1.0f;
-    [SerializeField] Vector2 _lineForWall = Vector2.right;
-    [SerializeField] Vector2 _lineForGround = new Vector2(1f, -1f);
-    [SerializeField] LayerMask _tileMapLayer = 0;
+    Vector2 _lineForWall = Vector2.right;
+    Vector2 _lineForGround = new Vector2(1f, -1f);
     Rigidbody _rb;
     bool _moveLeft = false;
 
@@ -33,10 +33,10 @@ public class Enemy : MonoBehaviour
         {
             _lineForWall = Vector2.right;//âE
         }
-        Debug.DrawLine(start, start + _lineForWall);
-        RaycastHit2D hit = Physics2D.Linecast(start, start + _lineForWall, _tileMapLayer);
-
-        if (hit.collider)
+        Ray ray = new Ray(start, _lineForWall); // RayÇê∂ê¨
+        Debug.DrawRay(ray.origin, ray.direction *1, Color.red);
+        Physics.Raycast(ray, out RaycastHit hitInfo, 1);
+        if (hitInfo.collider)
         {
             _moveLeft = !_moveLeft;
         }
@@ -53,11 +53,11 @@ public class Enemy : MonoBehaviour
         {
             _lineForGround = new Vector2(1f, -1f);//âEâ∫
         }
-        Debug.DrawLine(start, start + _lineForGround);    // ray Ç Scene è„Ç…ï`Ç≠
+        Ray ray = new Ray(start, _lineForGround); // RayÇê∂ê¨
+        Debug.DrawRay(ray.origin, ray.direction * 2, Color.red);
+        Physics.Raycast(ray, out RaycastHit hitInfo, 2);
         // è∞ÇÃåüèoÇééÇ›ÇÈ
-        RaycastHit2D hit = Physics2D.Linecast(start, start + _lineForGround, _tileMapLayer);
-
-        if (!hit.collider)
+        if (!hitInfo.collider)
         {
             _moveLeft = !_moveLeft;
         }
