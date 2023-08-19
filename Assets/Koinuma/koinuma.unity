@@ -366,9 +366,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slider: {fileID: 1560824027}
-  _moveOxygenConsumption: 0.02
-  _jumpOxygenConsumption: 0.02
-  _airCannonOxygenConsumption: 0
+  _moveOxygenConsumption: 2
+  _jumpOxygenConsumption: 2
+  _airCannonOxygenConsumption: 2
 --- !u!114 &387758654
 MonoBehaviour:
   m_ObjectHideFlags: 0
