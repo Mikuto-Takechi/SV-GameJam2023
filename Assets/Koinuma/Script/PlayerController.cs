@@ -10,6 +10,10 @@ public class PlayerController : MonoBehaviour
     [Header("移動のスピード")]
     [SerializeField] float _moveSpeed;
     [SerializeField] float _jumpPower;
+    [Space()]
+    [Tooltip("空中移動の速度割合")]
+    [SerializeField, Range(0, 1)] float _airMoveRate;
+
     OxygenManager _oxygenManager;
     Rigidbody _rb;
 
@@ -24,6 +28,12 @@ public class PlayerController : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
         if (h != 0)
         {
+            float scaleX = transform.localScale.x;
+            if (Mathf.Sign(scaleX) != h)
+            {
+                scaleX *= -1;
+                transform.localScale = new Vector3(scaleX, transform.localScale.y, transform.localScale.z);
+            }
             _oxygenManager.MoveOxygenConsumption(); // 移動での酸素減少
         }
         if (IsGround()) // 接地中処理
@@ -40,10 +50,11 @@ public class PlayerController : MonoBehaviour
         }
         else // 空中処理
         {
-            _rb.AddForce(Vector3.right * h * _moveSpeed * Time.deltaTime * 50, ForceMode.Force);
+            _rb.AddForce(Vector3.right * h * _moveSpeed * Time.deltaTime * 100 * _airMoveRate, ForceMode.Force);
         }
     }
 
+    /// <summary>接地判定</summary>
     bool IsGround()
     {
         Vector3 start = gameObject.transform.position;
