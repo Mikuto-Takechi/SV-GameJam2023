@@ -15,6 +15,7 @@ public class OxygenManager : MonoBehaviour
     [SerializeField] float _jumpOxygenConsumption;
     [Tooltip("‹ó‹C–C‚Å‚Ì_‘fÁ”ï—Ê")]
     [SerializeField] float _airCannonOxygenConsumption;
+    [SerializeField] float _CheckPointOxygen;
 
     /// <summary>ˆÚ“®‚Å‚Ì_‘fÁ”ï</summary>
     public void MoveOxygenConsumption()
@@ -37,5 +38,11 @@ public class OxygenManager : MonoBehaviour
     public void OxygenConsumption(int consumption)
     {
         _slider.value -= _slider.maxValue * consumption / 100;
+    }
+
+    public float GetAmountOfOxygenOnCheckPoint()
+    {
+        _slider.value += _slider.maxValue * _CheckPointOxygen / 100;
+        return _slider.value;
     }
 }
