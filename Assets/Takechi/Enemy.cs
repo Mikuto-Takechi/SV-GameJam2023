@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.UI.Image;
@@ -34,10 +35,14 @@ public class Enemy : MonoBehaviour
             _lineForWall = Vector2.right;//右
         }
         Ray ray = new Ray(start, _lineForWall); // Rayを生成
-        Debug.DrawRay(ray.origin, ray.direction *1, Color.red);
-        Physics.Raycast(ray, out RaycastHit hitInfo, 1);
+        Debug.DrawRay(ray.origin, ray.direction *0.5f, Color.red);
+        Physics.Raycast(ray, out RaycastHit hitInfo, 0.5f);
         if (hitInfo.collider)
         {
+            //if (hitInfo.collider.TryGetComponent(out OxygenManager player))
+            //{
+            //    player.OxygenConsumption(10);
+            //}
             _moveLeft = !_moveLeft;
         }
     }
@@ -78,5 +83,12 @@ public class Enemy : MonoBehaviour
         }
         velo.y = _rb.velocity.y;    // 落下については現在の値を保持する
         _rb.velocity = velo;        // 速度ベクトルをセットする
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent(out OxygenManager player))
+        {
+            player.OxygenConsumption(10);
+        }
     }
 }
