@@ -4229,14 +4229,6 @@ PrefabInstance:
       propertyPath: _slider
       value: 
       objectReference: {fileID: 1997198785}
-    - target: {fileID: 5354029658670287953, guid: bf07b50debd9672439736e919422a970, type: 3}
-      propertyPath: m_Height
-      value: 1.9268848
-      objectReference: {fileID: 0}
-    - target: {fileID: 5354029658670287953, guid: bf07b50debd9672439736e919422a970, type: 3}
-      propertyPath: m_Center.y
-      value: 0.23377961
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
