@@ -28,8 +28,21 @@ public class AudioManager : MonoBehaviour
     /// <param name="mode"></param>
     void SceneLoaded(Scene nextScene, LoadSceneMode mode)
     {
-        if (SceneManager.GetActiveScene().name.Contains("Title")) PlayBGM(0);
-        if (SceneManager.GetActiveScene().name.Contains("Game")) PlayBGM(1);
+        if (SceneManager.GetActiveScene().name.Contains("Title"))
+        {
+            StopBGM();
+            PlayBGM(0);
+        }
+        if (SceneManager.GetActiveScene().name.Contains("Game"))
+        {
+            StopBGM();
+            PlayBGM(1);
+        }
+        if (SceneManager.GetActiveScene().name.Contains("Clear"))
+        {
+            StopBGM();
+            PlaySE(11);
+        }
     }
     /// <summary>
     /// SEÇçƒê∂Ç∑ÇÈ

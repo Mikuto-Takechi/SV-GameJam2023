@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Takechi/Title.unity
     guid: 986a06d3f84da654289484a72fe3e896
   - enabled: 1
-    path: Assets/Takechi/Game.unity
-    guid: a4dbfad0fe9725a4e966bc6583f99370
+    path: Assets/Koinuma/Game.unity
+    guid: 9b63e8db9c7723744b2690c06e85b3a2
+  - enabled: 1
+    path: Assets/Takechi/Clear.unity
+    guid: 299f0efcd46719b439f7754d2bc6df64
   m_configObjects: {}

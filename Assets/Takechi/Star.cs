@@ -22,6 +22,8 @@ public class Star : MonoBehaviour
             AudioManager.instance.PlaySE(6);
             AudioManager.instance.StopBGM();
             AudioManager.instance.PlayBGM(2);
+            var clearObject = FindObjectOfType<Clear>();
+            clearObject._active = true;
             _toggle = false;
             gameObject.SetActive(false);
         }
