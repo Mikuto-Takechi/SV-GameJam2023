@@ -16,11 +16,7 @@ public class Star : MonoBehaviour
         {
             foreach(EnemyGenerator generator in _generators)
             {
-                // 取得した子オブジェクトのコンポーネントに対して処理を行う
-                foreach (Component component in generator.GetComponentsInChildren<Component>())
-                {
-                    Destroy(component.gameObject);
-                }
+                generator.EnemyGenerate(2);
             }
             AudioManager.instance.PlaySE(5);
         }
