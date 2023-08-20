@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7787746933919298465}
   - component: {fileID: 2056988846718011337}
   - component: {fileID: 9216069061840066614}
-  m_Layer: 2
+  m_Layer: 3
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6054693888174088439
 MeshFilter:
@@ -149,3 +149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 5
+  _ignoreLayer:
+    serializedVersion: 2
+    m_Bits: 8
