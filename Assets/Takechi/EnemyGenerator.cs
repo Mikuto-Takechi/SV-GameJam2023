@@ -7,11 +7,20 @@ public class EnemyGenerator : MonoBehaviour
     [SerializeField] GameObject _enemy = null;
     void Start()
     {
-        var enemy = Instantiate(_enemy,transform);
+        Instantiate(_enemy,transform);
     }
-
-    void Update()
+    public void EnemyGenerate(int max)
     {
-        
+        StartCoroutine(EnemyGenerateDelay(max));
+    }
+    IEnumerator EnemyGenerateDelay(int max)
+    {
+        int generateCount = 0;
+        while (generateCount < max)
+        {
+            Instantiate(_enemy, transform);
+            yield return new WaitForSeconds(2);
+        }
+        yield break;
     }
 }
