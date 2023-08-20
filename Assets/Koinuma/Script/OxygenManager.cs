@@ -8,13 +8,14 @@ public class OxygenManager : MonoBehaviour
 {
     [Tooltip("_‘fƒQ[ƒW‚ÌƒXƒ‰ƒCƒ_[")]
     [SerializeField] Slider _slider;
-    [Header("_‘fÁ”ï—ÊÅ‘å_‘f—ÊŠ„‡(%)")]
+    [Header("_‘f—ÊÅ‘å_‘f—ÊŠ„‡(%)")]
     [Tooltip("‰¡ˆÚ“®‚Å1•bŠÔ‚ ‚½‚è‚ÌÁ”ï—Ê")]
     [SerializeField] float _moveOxygenConsumption;
     [Tooltip("ƒWƒƒƒ“ƒv‚Å‚ÌÁ”ï—Ê")]
     [SerializeField] float _jumpOxygenConsumption;
     [Tooltip("‹ó‹C–C‚Å‚Ì_‘fÁ”ï—Ê")]
     [SerializeField] float _airCannonOxygenConsumption;
+    [Tooltip("ƒ`ƒFƒbƒNƒ|ƒCƒ“ƒg‚Å‰ñ•œ‚·‚é_‘f—Ê")]
     [SerializeField] float _CheckPointOxygen;
 
     /// <summary>ˆÚ“®‚Å‚Ì_‘fÁ”ï</summary>
@@ -35,11 +36,13 @@ public class OxygenManager : MonoBehaviour
         _slider.value -= _slider.maxValue * _airCannonOxygenConsumption / 100;
     }
 
+    /// <summary>ˆø”‚Å_‘f‚ğŒ¸‚ç‚¹‚é</summary>
     public void OxygenConsumption(int consumption)
     {
         _slider.value -= _slider.maxValue * consumption / 100;
     }
 
+    /// <summary>ƒ`ƒFƒbƒNƒ|ƒCƒ“ƒg‚Å‚Ì_‘f‘‰Á‚Æ’l‚ğ•Ô‚·</summary>
     public float GetAmountOfOxygenOnCheckPoint()
     {
         _slider.value += _slider.maxValue * _CheckPointOxygen / 100;

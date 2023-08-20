@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
         _gameOverPanel.SetActive(false);
     }
 
-    public void CheckPoint(float amountOfOxygen, Vector3 checkPoint)
+    public void SaveData(float amountOfOxygen, Vector3 checkPoint)
     {
         _amountOfOxygen = amountOfOxygen;
         _reSpawnPosition = checkPoint;
@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     {
         _gameOverPanel.SetActive(false);
         _playerObject.transform.position = _reSpawnPosition;
+        _slider.value = _amountOfOxygen;
     }
 
     public void GameOver()
