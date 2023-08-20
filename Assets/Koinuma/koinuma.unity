@@ -3350,6 +3350,10 @@ PrefabInstance:
       propertyPath: _gameOverHeight
       value: -10
       objectReference: {fileID: 0}
+    - target: {fileID: 1656803218172843693, guid: bd31df65627edb048a1fd0476e1cc958, type: 3}
+      propertyPath: _isGroundLength
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1678269417240550164, guid: bd31df65627edb048a1fd0476e1cc958, type: 3}
       propertyPath: m_RootOrder
       value: 7
