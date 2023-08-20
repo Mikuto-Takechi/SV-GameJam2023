@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Star : MonoBehaviour
 {
+    [SerializeField] CheckPointController _checkPoint;
     EnemyGenerator[] _generators = null;
     private void Start()
     {
@@ -18,6 +16,7 @@ public class Star : MonoBehaviour
             {
                 generator.EnemyGenerate(2);
             }
+            _checkPoint.GetStar();
             AudioManager.instance.PlaySE(5);
         }
     }

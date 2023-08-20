@@ -18,11 +18,14 @@ public class OxygenManager : MonoBehaviour
     [Tooltip("チェックポイントで回復する酸素量")]
     [SerializeField] float _CheckPointOxygen;
 
+    Animator _animator;
+
     /// <summary>移動での酸素消費</summary>
     public void MoveOxygenConsumption()
     {
         _slider.value -= _slider.maxValue * _moveOxygenConsumption / 100 * Time.deltaTime;
         OxygenLevelCheck();
+        _animator = GetComponent<Animator>();
     }
 
     /// <summary>ジャンプでの酸素消費</summary>
@@ -44,6 +47,7 @@ public class OxygenManager : MonoBehaviour
     {
         _slider.value -= _slider.maxValue * consumption / 100;
         OxygenLevelCheck();
+        _animator.SetTrigger("Hit");
     }
 
     /// <summary>チェックポイントでの酸素増加と値を返す</summary>
