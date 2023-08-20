@@ -7,6 +7,7 @@ using static UnityEngine.UI.Image;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] float _moveSpeed = 1.0f;
+    [SerializeField] LayerMask _ignoreLayer = default;
     Vector2 _lineForWall = Vector2.right;
     Vector2 _lineForGround = new Vector2(1f, -1f);
     Rigidbody _rb;
@@ -34,14 +35,14 @@ public class Enemy : MonoBehaviour
             _lineForWall = Vector2.right;//âE
         }
         Ray ray = new Ray(start, _lineForWall); // RayÇê∂ê¨
-        Debug.DrawRay(ray.origin, ray.direction *0.5f, Color.red);
-        Physics.Raycast(ray, out RaycastHit hitInfo, 0.5f);
+        Debug.DrawRay(ray.origin, ray.direction *1f, Color.red);
+        Physics.Raycast(ray, out RaycastHit hitInfo, 1, ~_ignoreLayer);
         if (hitInfo.collider)
         {
-            //if (hitInfo.collider.TryGetComponent(out OxygenManager player))
-            //{
-            //    player.OxygenConsumption(10);
-            //}
+            if (hitInfo.collider.TryGetComponent(out OxygenManager player))
+            {
+                player.OxygenConsumption(10);
+            }
             _moveLeft = !_moveLeft;
         }
     }
@@ -59,7 +60,7 @@ public class Enemy : MonoBehaviour
         }
         Ray ray = new Ray(start, _lineForGround); // RayÇê∂ê¨
         Debug.DrawRay(ray.origin, ray.direction * 2, Color.red);
-        Physics.Raycast(ray, out RaycastHit hitInfo, 2);
+        Physics.Raycast(ray, out RaycastHit hitInfo, 2,~_ignoreLayer);
         // è∞ÇÃåüèoÇééÇ›ÇÈ
         if (!hitInfo.collider)
         {
