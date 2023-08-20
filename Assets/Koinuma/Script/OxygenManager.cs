@@ -22,24 +22,28 @@ public class OxygenManager : MonoBehaviour
     public void MoveOxygenConsumption()
     {
         _slider.value -= _slider.maxValue * _moveOxygenConsumption / 100 * Time.deltaTime;
+        OxygenLevelCheck();
     }
 
     /// <summary>ƒWƒƒƒ“ƒv‚Å‚Ì_‘fÁ”ï</summary>
     public void JumpOxygenConsumption()
     {
         _slider.value -= _slider.maxValue * _jumpOxygenConsumption / 100;
+        OxygenLevelCheck();
     }
 
     /// <summary>‹ó‹C–C‚Å‚Ì_‘fÁ”ï</summary>
     public void AirCannonOxygenConsumption()
     {
         _slider.value -= _slider.maxValue * _airCannonOxygenConsumption / 100;
+        OxygenLevelCheck();
     }
 
     /// <summary>ˆø”‚Å_‘f‚ğŒ¸‚ç‚¹‚é</summary>
     public void OxygenConsumption(int consumption)
     {
         _slider.value -= _slider.maxValue * consumption / 100;
+        OxygenLevelCheck();
     }
 
     /// <summary>ƒ`ƒFƒbƒNƒ|ƒCƒ“ƒg‚Å‚Ì_‘f‘‰Á‚Æ’l‚ğ•Ô‚·</summary>
@@ -47,5 +51,14 @@ public class OxygenManager : MonoBehaviour
     {
         _slider.value += _slider.maxValue * _CheckPointOxygen / 100;
         return _slider.value;
+    }
+
+    /// <summary>_‘f—Êƒ`ƒFƒbƒN</summary>
+    public void OxygenLevelCheck()
+    {
+        if (_slider.value <= 0)
+        {
+            GameManager.instance.GameOver();
+        }
     }
 }
