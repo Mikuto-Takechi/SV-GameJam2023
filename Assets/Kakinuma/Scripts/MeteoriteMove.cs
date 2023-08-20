@@ -5,28 +5,41 @@ using UnityEngine;
 public class MeteoriteMove : MonoBehaviour
 {
     //[SerializeField] GameObject _meteorite;
+    [Tooltip("隕石のスピード")]
     [SerializeField] float _meteoriteSpeed = 1f;
+    GameObject _player;
     Rigidbody _meteoriteRigidbody;
+    Rigidbody _playerRigidbody;
     Vector3 _direction = new Vector3(1, 0, 0);
+    [Tooltip("往復判定のトリガーを入れる")]
     public ReturnCheck returnCheck;
-    // Start is called before the first frame update
+
     void Start()
     {
         _meteoriteRigidbody = GetComponent<Rigidbody>();
+        _player = GameObject.Find("Player");
+        _playerRigidbody = _player.GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (!returnCheck._return)
+        if (!returnCheck._return) //行き
         {
-            Vector3 _meteoriteVelo = _direction * _meteoriteSpeed;
+            Vector3 _meteoriteVelo = _direction * _meteoriteSpeed; //右に移動
             _meteoriteRigidbody.velocity = _meteoriteVelo;
         }
-        else
+        else //帰り
         {
-            Vector3 _meteoriteVelo = -_direction * _meteoriteSpeed;
+            Vector3 _meteoriteVelo = -_direction * _meteoriteSpeed; //左に移動
             _meteoriteRigidbody.velocity = _meteoriteVelo;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            _playerRigidbody.AddForce(1, 0, 0, ForceMode.Impulse); //Playerがぶつかってきた向きに跳ね返せるようにしたい
         }
     }
 }
