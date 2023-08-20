@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Takechi/Title.unity
+    guid: 986a06d3f84da654289484a72fe3e896
+  - enabled: 1
+    path: Assets/Takechi/Game.unity
+    guid: a4dbfad0fe9725a4e966bc6583f99370
   m_configObjects: {}
