@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1104774490966197645}
   - component: {fileID: 8533871313492807371}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Vertical
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 1193711594610625246}
   - component: {fileID: 5927783495613499138}
   - component: {fileID: 4824151240357554758}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CubeVSprite (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 5897678330589679191}
   - component: {fileID: 291023995498422342}
   - component: {fileID: 7573731773942746305}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CubeVSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
