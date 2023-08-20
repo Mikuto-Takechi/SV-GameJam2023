@@ -10,9 +10,10 @@ public class PlayerController : MonoBehaviour
     [Header("移動のスピード")]
     [SerializeField] float _moveSpeed;
     [SerializeField] float _jumpPower;
-    [Space()]
     [Tooltip("空中移動の速度割合")]
     [SerializeField, Range(0, 1)] float _airMoveRate;
+    [Header("GameOverになる高さ(Y)")]
+    [SerializeField] float _gameOverHeight;
 
     OxygenManager _oxygenManager;
     Rigidbody _rb;
@@ -51,6 +52,11 @@ public class PlayerController : MonoBehaviour
         else // 空中処理
         {
             _rb.AddForce(Vector3.right * h * _moveSpeed * Time.deltaTime * 100 * _airMoveRate, ForceMode.Force);
+        }
+
+        if (transform.position.y < _gameOverHeight)
+        {
+            GameManager.instance.GameOver();
         }
     }
 
