@@ -12,11 +12,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _jumpPower;
     [Tooltip("空中移動の速度割合")]
     [SerializeField, Range(0, 1)] float _airMoveRate;
-    [Header("GameOverになる高さ(Y)")]
+    [Tooltip("歩ける最大角度(度)")]
+    [SerializeField] int _walkingAngle;
+    [Tooltip("接地判定の長さ")]
+    [SerializeField] float _isGroundLength;
+    [Space()]
+    [Tooltip("GameOverになる高さ(Y)")]
     [SerializeField] float _gameOverHeight;
 
     OxygenManager _oxygenManager;
     Rigidbody _rb;
+    Vector3 _planeNormalVector; // 触れてる地面の法線ベクトル
 
     private void Start()
     {
@@ -40,7 +46,7 @@ public class PlayerController : MonoBehaviour
         if (IsGround()) // 接地中処理
         {
             // 横方向の移動
-            _rb.AddForce(Vector3.right * h * _moveSpeed * Time.deltaTime * 100, ForceMode.Force);
+            _rb.AddForce(Vector3.ProjectOnPlane(Vector3.right, _planeNormalVector) * h * _moveSpeed * Time.deltaTime * 100, ForceMode.Force);
 
             // ジャンプ処理
             if (Input.GetButtonDown("Jump"))
@@ -64,7 +70,7 @@ public class PlayerController : MonoBehaviour
     bool IsGround()
     {
         Vector3 start = gameObject.transform.position;
-        Vector3 end = gameObject.transform.position + Vector3.down * 1.1f;
+        Vector3 end = start + Vector3.down * _isGroundLength;
         Debug.DrawLine(start, end);
         if (Physics.Linecast(start, end))
         {
@@ -73,6 +79,15 @@ public class PlayerController : MonoBehaviour
         else
         {
             return false;
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        float angle = Vector3.Angle(Vector3.up, collision.contacts[0].normal);
+        if (angle < _walkingAngle)
+        {
+            _planeNormalVector = collision.contacts[0].normal;
         }
     }
 }
