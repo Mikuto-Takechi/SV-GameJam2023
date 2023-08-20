@@ -8,34 +8,57 @@ public class OxygenManager : MonoBehaviour
 {
     [Tooltip("_‘fƒQ[ƒW‚ÌƒXƒ‰ƒCƒ_[")]
     [SerializeField] Slider _slider;
-    [Header("_‘fÁ”ï—ÊÅ‘å_‘f—ÊŠ„‡(%)")]
+    [Header("_‘f—ÊÅ‘å_‘f—ÊŠ„‡(%)")]
     [Tooltip("‰¡ˆÚ“®‚Å1•bŠÔ‚ ‚½‚è‚ÌÁ”ï—Ê")]
     [SerializeField] float _moveOxygenConsumption;
     [Tooltip("ƒWƒƒƒ“ƒv‚Å‚ÌÁ”ï—Ê")]
     [SerializeField] float _jumpOxygenConsumption;
     [Tooltip("‹ó‹C–C‚Å‚Ì_‘fÁ”ï—Ê")]
     [SerializeField] float _airCannonOxygenConsumption;
+    [Tooltip("ƒ`ƒFƒbƒNƒ|ƒCƒ“ƒg‚Å‰ñ•œ‚·‚é_‘f—Ê")]
+    [SerializeField] float _CheckPointOxygen;
 
     /// <summary>ˆÚ“®‚Å‚Ì_‘fÁ”ï</summary>
     public void MoveOxygenConsumption()
     {
         _slider.value -= _slider.maxValue * _moveOxygenConsumption / 100 * Time.deltaTime;
+        OxygenLevelCheck();
     }
 
     /// <summary>ƒWƒƒƒ“ƒv‚Å‚Ì_‘fÁ”ï</summary>
     public void JumpOxygenConsumption()
     {
         _slider.value -= _slider.maxValue * _jumpOxygenConsumption / 100;
+        OxygenLevelCheck();
     }
 
     /// <summary>‹ó‹C–C‚Å‚Ì_‘fÁ”ï</summary>
     public void AirCannonOxygenConsumption()
     {
         _slider.value -= _slider.maxValue * _airCannonOxygenConsumption / 100;
+        OxygenLevelCheck();
     }
 
+    /// <summary>ˆø”‚Å_‘f‚ğŒ¸‚ç‚¹‚é</summary>
     public void OxygenConsumption(int consumption)
     {
         _slider.value -= _slider.maxValue * consumption / 100;
+        OxygenLevelCheck();
+    }
+
+    /// <summary>ƒ`ƒFƒbƒNƒ|ƒCƒ“ƒg‚Å‚Ì_‘f‘‰Á‚Æ’l‚ğ•Ô‚·</summary>
+    public float GetAmountOfOxygenOnCheckPoint()
+    {
+        _slider.value += _slider.maxValue * _CheckPointOxygen / 100;
+        return _slider.value;
+    }
+
+    /// <summary>_‘f—Êƒ`ƒFƒbƒN</summary>
+    public void OxygenLevelCheck()
+    {
+        if (_slider.value <= 0)
+        {
+            GameManager.instance.GameOver();
+        }
     }
 }
