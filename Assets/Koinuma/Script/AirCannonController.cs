@@ -24,6 +24,7 @@ public class AirCannonController : MonoBehaviour
         _timer += Time.deltaTime;
         if (_timer > _interval && Input.GetButton("Fire1"))
         {
+            AudioManager.instance.PlaySE(10);
             GameObject bullet = Instantiate(_airBullet);
             bullet.transform.position = _muzzleTransform.position;
             bullet.GetComponent<AirBulletController>().SetDirection(Mathf.Sign(transform.localScale.x));

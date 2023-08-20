@@ -18,6 +18,7 @@ public class EnemyGenerator : MonoBehaviour
         int generateCount = 0;
         while (generateCount < max)
         {
+            generateCount++;
             Instantiate(_enemy, transform);
             yield return new WaitForSeconds(2);
         }
