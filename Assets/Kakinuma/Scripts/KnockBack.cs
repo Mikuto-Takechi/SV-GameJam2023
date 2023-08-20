@@ -22,6 +22,7 @@ public class KnockBack : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            AudioManager.instance.PlaySE(7);
             Vector3 _direction = (_player.transform.position - this.transform.position); //Õ“Ë‚ÌŒü‚«‚ğŒvZ
             _playerRigidbody.AddForce(_direction.x * _repellingPower, _direction.y * _repellingPower, 0, ForceMode.Impulse);
         }

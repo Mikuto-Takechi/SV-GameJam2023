@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
             // ジャンプ処理
             if (Input.GetButtonDown("Jump"))
             {
+                AudioManager.instance.PlaySE(1);
                 _rb.AddForce(Vector3.up * _jumpPower, ForceMode.Impulse);
                 _oxygenManager.JumpOxygenConsumption(); // ジャンプでの酸素減少
             }

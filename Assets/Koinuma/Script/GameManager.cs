@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     Vector3 _reSpawnPosition;
     float _amountOfOxygen;
+    bool _singleSound = true;
     public static GameManager instance;
 
     private void Awake()
@@ -38,6 +39,9 @@ public class GameManager : MonoBehaviour
 
     public void Retry()
     {
+        _singleSound = true;
+        AudioManager.instance.PauseBGM(false);
+        AudioManager.instance.PlaySE(3);
         _gameOverPanel.SetActive(false);
         _playerObject.transform.position = _reSpawnPosition;
         _slider.value = _amountOfOxygen;
@@ -45,6 +49,12 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        if(_singleSound)
+        {
+            AudioManager.instance.PauseBGM(true);
+            AudioManager.instance.PlaySE(12);
+            _singleSound = false;
+        }
         _gameOverPanel.SetActive(true);
     }
 }
