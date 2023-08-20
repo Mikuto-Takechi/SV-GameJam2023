@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7732086499771457212}
   - component: {fileID: 2326261157696391641}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CubeWaveA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,7 +65,7 @@ GameObject:
   - component: {fileID: 3645100943881365129}
   - component: {fileID: 3437919785009036905}
   - component: {fileID: 2210152273890249359}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _meteoriteSpeed: 1
+  _meteoriteSpeedReturn: 1
   returnCheck: {fileID: 0}
 --- !u!54 &2210152273890249359
 Rigidbody:
@@ -141,7 +142,7 @@ GameObject:
   - component: {fileID: 4057818740716972205}
   - component: {fileID: 3365718691259887170}
   - component: {fileID: 7144308057645294739}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
