@@ -3,9 +3,17 @@ using UnityEngine;
 /// <summary>èeíeêßå‰</summary>
 public class AirBulletController : MonoBehaviour
 {
+    [Header("íeÇÃë¨Ç≥")]
     [SerializeField] float _bulletSpeed;
+    [Header("é©ëRè¡ñ≈Ç∑ÇÈÇ‹Ç≈ÇÃéûä‘")]
+    [SerializeField] float _naturalExtinctionTime;
 
     float _xDirection;
+
+    private void Start()
+    {
+        Destroy(gameObject, _naturalExtinctionTime);
+    }
 
     private void Update()
     {
@@ -16,5 +24,14 @@ public class AirBulletController : MonoBehaviour
     public void SetDirection(float sign)
     {
         _xDirection = sign;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            Destroy(other.gameObject);
+        }
+        Destroy(gameObject);
     }
 }
